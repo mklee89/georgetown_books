@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<body>
+  <header>
+    <div class="container">
+      <div id="branding">
+        <h1><span class="highlight">Georgetown Book Club</span></h1>
+        <h2><span class="highlight">{{Genre}}</span></h2>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="newhomepage.html">Home</a></li>
+          <li class="current"><a href="about.html">About</a></li>
+          <li><a href="services.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+    {% if books %}
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+            <tr>
+              <td>{{ book["rank"] }}</td>
+              <td>{{ book["title"] }}</td>
+              <td>{{ book["author"] }}</td>
+              <td>{{ book["description"] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>Books not found.</p>
+  {% endif %}
+</body>
+</html>
